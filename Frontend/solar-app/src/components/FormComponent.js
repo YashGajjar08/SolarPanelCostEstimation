@@ -349,11 +349,11 @@ export default function FormComponent() {
             <ul>
               <li>Capacity : {capacity} kW</li>
               <li>State : {JSON.parse(statename).state}</li>
-              <li>GHI : {JSON.parse(statename).ghi}</li>
+              <li>GHI : {JSON.parse(statename).ghi} </li>
               <li>Lattitude : {JSON.parse(statename).lat}</li>
               <li>Longtitude : {JSON.parse(statename).lon}</li>
               <li>Category : {category}</li>
-              <li>Cost : {cost}</li>
+              <li>Cost : {cost}Rs./Unit</li>
               <li>
                 Temperature : {(tempData.main.temp - 273.15).toFixed(2)} °C
               </li>
