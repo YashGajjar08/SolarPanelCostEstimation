@@ -353,7 +353,7 @@ export default function FormComponent() {
               <li>Lattitude : {JSON.parse(statename).lat}</li>
               <li>Longtitude : {JSON.parse(statename).lon}</li>
               <li>Category : {category}</li>
-              <li>Cost : {cost}Rs./Unit</li>
+              <li>Cost : {cost} Rs./Unit</li>
               <li>
                 Temperature : {(tempData.main.temp - 273.15).toFixed(2)} °C
               </li>
