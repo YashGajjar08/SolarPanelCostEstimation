@@ -264,6 +264,7 @@ export default function FormComponent() {
                   type="range"
                   className="form-range"
                   id="capacity"
+                  value={capacity}
                   min="1"
                   max="1000"
                   onChange={(e) => setCapacity(e.target.value)}
