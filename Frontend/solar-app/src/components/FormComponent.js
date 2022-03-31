@@ -215,38 +215,50 @@ export default function FormComponent() {
       lat: "28.2180",
       lon: "94.7278",
       ghi: "1428",
-    }
+    },
   ];
   const [capacity, setCapacity] = useState(1);
-  const [statename, setStatename] = useState(
-    JSON.stringify(stateData[0])
-  );
+  const [statename, setStatename] = useState(JSON.stringify(stateData[0]));
   const [category, setCategory] = useState("Residential");
   const [tempData, setTempData] = useState(null);
   const [cost, setcost] = useState(0);
+  const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
+  const [appshow, setAppShow] = useState(false);
   const handleClose = () => {
     setShow(false);
     setTempData(null);
   };
+  const handleApplClose = () => {
+    setAppShow(false);
+  };
   const handleShow = () => setShow(true);
+  const handleAppShow = () => setAppShow(true);
+  const showAppliances = (e) =>{
+    e.preventDefault();
+    handleAppShow();
+  }
   const showPopup = (e) => {
     e.preventDefault();
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${
-          JSON.parse(statename).lat
-        }&lon=${
-          JSON.parse(statename).lon
-        }&appid=57b0455c3ac9fcc2991aed2d12e53998`
-      )
-      .then((res) => {
-        setTempData(res.data);
-      });
-    //   .then((e) => {
-    //     handleShow();
-    //   });
-    handleShow();
+    if (cost > 0) {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${
+            JSON.parse(statename).lat
+          }&lon=${
+            JSON.parse(statename).lon
+          }&appid=57b0455c3ac9fcc2991aed2d12e53998`
+        )
+        .then((res) => {
+          setTempData(res.data);
+        });
+      handleShow();
+    } else {
+      setError("Please enter valid cost");
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    } 
   };
   return (
     <div className="container">
@@ -298,7 +310,7 @@ export default function FormComponent() {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="Residential">Residential</option>
-                  <option value="Industerial">Industerial</option>
+                  <option value="Industrial">Industrial</option>
                   <option value="Institutional">Institutional</option>
                   <option value="Commercial">Commercial</option>
                   <option value="Government">Government</option>
@@ -324,6 +336,14 @@ export default function FormComponent() {
                   </span>
                 </div>
               </div>
+              <div className="my-2">
+              <button
+                onClick={showAppliances}
+                className="btn btn-primary"
+              >
+                Appliances Load
+              </button>
+              </div>
               <button
                 type="submit"
                 onClick={showPopup}
@@ -331,6 +351,9 @@ export default function FormComponent() {
               >
                 Submit
               </button>
+              <div className="text-center my-3 text-danger">
+                {error}
+              </div>
             </form>
           </div>
         </div>
@@ -364,12 +387,32 @@ export default function FormComponent() {
             </ul>
           ) : (
             <div className="text-center">
-              <Spinner animation="grow" variant="warning" />
+              <Spinner animation="grow" variant="danger" />
             </div>
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+      <Modal
+        show={appshow}
+        onHide={handleApplClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Appliances Load</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Appliances Load
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleApplClose}>
             Close
           </Button>
         </Modal.Footer>
