@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { Modal, Button, Spinner } from "react-bootstrap";
+import { Modal, Button, Spinner,Table } from "react-bootstrap";
 
 export default function FormComponent() {
   const stateData = [
@@ -10,7 +10,7 @@ export default function FormComponent() {
       lat: "11.059821",
       lon: "78.387451",
       ghi: "1957",
-      zeroToHundred: "Nil",
+      zeroToHundred: "0",
       OhoToTh: "3.5",
       ThoToFh: "4.6",
       Above500: "6.6",
@@ -413,7 +413,7 @@ export default function FormComponent() {
     <div className="container">
       <div className="row mt-4 d-flex justify-content-center">
         <div className="col-6">
-          <div className="card px-3 py-4">
+          <div className="card px-3 py-4 form-card">
             <h2 className="text-center">ENTER BELOW DETAILS</h2>
             <form>
               <div className="mb-3">
@@ -449,6 +449,36 @@ export default function FormComponent() {
                   })}
                 </select>
               </div>
+              <div className="text-center state-price">
+                <p><b>{JSON.parse(statename).state}</b> Electricity Cost</p>
+                <Table striped bordered hover size="sm">
+                  <thead>
+                    <tr>
+                      <th>Range</th>
+                      <th>Price/unit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>0 - 100</td>
+                      <td>{JSON.parse(statename).zeroToHundred} ₹</td>
+                    </tr>
+                    <tr>
+                      <td>101 - 200</td>
+                      <td>{JSON.parse(statename).OhoToTh} ₹</td>
+                    </tr>
+                    <tr>
+                      <td>201 - 500</td>
+                      <td>{JSON.parse(statename).ThoToFh} ₹</td>
+                    </tr>
+                    <tr>
+                      <td>Above 500</td>
+                      <td>{JSON.parse(statename).Above500} ₹</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+              
               <div className="mb-3">
                 <label htmlFor="selectcategory" className="form-label">
                   Select State
