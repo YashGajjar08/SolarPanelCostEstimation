@@ -5,216 +5,365 @@ import { Modal, Button, Spinner } from "react-bootstrap";
 
 export default function FormComponent() {
   const stateData = [
-    { state: "Tamil Nadu", lat: "11.059821", lon: "78.387451", ghi: "1957" },
+    {
+      state: "Tamil Nadu",
+      lat: "11.059821",
+      lon: "78.387451",
+      ghi: "1957",
+      zeroToHundred: "Nil",
+      OhoToTh: "3.5",
+      ThoToFh: "4.6",
+      Above500: "6.6",
+    },
     {
       state: "Telangana",
       lat: "17.123184",
       lon: "79.208824",
       ghi: "1949",
+      zeroToHundred: "3.3",
+      OhoToTh: "4.3",
+      ThoToFh: "7.85",
+      Above500: "8.75",
     },
     {
       state: "Madhya Pradesh",
       lat: "23.473324",
       lon: "77.947998",
       ghi: "1900",
+      zeroToHundred: "4.13",
+      OhoToTh: "5.05",
+      ThoToFh: "6.4",
+      Above500: "8.73",
     },
     {
       state: "Haryana",
       lat: "29.238478",
       lon: "76.431885",
       ghi: "1702",
+      zeroToHundred: "3.6",
+      OhoToTh: "4.75",
+      ThoToFh: "5.55",
+      Above500: "6.75",
     },
     {
       state: "Chhattisgarh",
       lat: "21.295132",
       lon: "81.828232",
       ghi: "1883",
+      zeroToHundred: "4.5",
+      OhoToTh: "4.95",
+      ThoToFh: "5.6",
+      Above500: "6.5",
     },
     {
       state: "Haryana",
       lat: "29.065773",
       lon: "76.040497",
       ghi: "1702",
+      zeroToHundred: "3.6",
+      OhoToTh: "4.75",
+      ThoToFh: "5.55",
+      Above500: "6.75",
     },
     {
       state: "Maharashtra",
       lat: "19.601194",
       lon: "75.552979",
       ghi: "1931",
+      zeroToHundred: "3.22",
+      OhoToTh: "5.92",
+      ThoToFh: "8.89",
+      Above500: "10.47",
     },
     {
       state: "Tripura",
       lat: "23.745127",
       lon: "91.746826",
       ghi: "1663",
+      zeroToHundred: "3.6",
+      OhoToTh: "4.75",
+      ThoToFh: "5.55",
+      Above500: "6.75",
     },
     {
       state: "Karnataka",
       lat: "15.317277",
       lon: "75.713890",
       ghi: "1941",
+      zeroToHundred: "4.10",
+      OhoToTh: "5.55",
+      ThoToFh: "7.10",
+      Above500: "8.15",
     },
     {
       state: "Kerala",
       lat: "10.850516",
       lon: "76.271080",
       ghi: "1974",
+      zeroToHundred: "3.70",
+      OhoToTh: "5.50",
+      ThoToFh: "6.90",
+      Above500: "7.90",
     },
     {
       state: "Uttar Pradesh",
       lat: "28.207609",
       lon: "79.826660",
       ghi: "1720",
+      zeroToHundred: "5.50",
+      OhoToTh: "6.00",
+      ThoToFh: "6.50",
+      Above500: "7.00",
     },
     {
       state: "Assam",
       lat: "26.244156",
       lon: "92.537842",
       ghi: "1617",
+      zeroToHundred: "4.90",
+      OhoToTh: "6.15",
+      ThoToFh: "6.75",
+      Above500: "7.15",
     },
     {
       state: "Tamil Nadu",
       lat: "11.127123",
       lon: "78.656891",
       ghi: "1957",
+      zeroToHundred: "0.00",
+      OhoToTh: "3.50",
+      ThoToFh: "4.60",
+      Above500: "6.60",
     },
     {
       state: "Karnataka",
       lat: "15.317277",
       lon: "75.713890",
       ghi: "1941",
+      zeroToHundred: "4.10",
+      OhoToTh: "5.55",
+      ThoToFh: "7.10",
+      Above500: "8.15",
     },
     {
       state: "West Bengal",
       lat: "22.978624",
       lon: "87.747803",
       ghi: "1696",
+      zeroToHundred: "5.26",
+      OhoToTh: "5.86",
+      ThoToFh: "6.98",
+      Above500: "8.50",
     },
     {
       state: "Gujarat",
       lat: "22.309425",
       lon: "72.136230",
       ghi: "2026",
+      zeroToHundred: "3.1",
+      OhoToTh: "3.75",
+      ThoToFh: "4.90",
+      Above500: "5.05",
     },
     {
       state: "Odisha",
       lat: "20.940920",
       lon: "84.803467",
       ghi: "1795",
+      zeroToHundred: "3.00",
+      OhoToTh: "4.80",
+      ThoToFh: "5.80",
+      Above500: "6.20",
     },
     {
       state: "Rajasthan",
       lat: "27.391277",
       lon: "73.432617",
       ghi: "1896",
+      zeroToHundred: "6.50",
+      OhoToTh: "7.35",
+      ThoToFh: "7.65",
+      Above500: "7.95",
     },
     {
       state: "Uttarakhand",
       lat: "30.0668",
       lon: "79.0193°",
       ghi: "1783",
+      zeroToHundred: "3.42",
+      OhoToTh: "4.20",
+      ThoToFh: "5.30",
+      Above500: "6.64",
     },
     {
       state: "Sikkim",
       lat: "27.5330",
       lon: "88.5122°",
       ghi: "1471",
+      zeroToHundred: "2.00",
+      OhoToTh: "3.00",
+      ThoToFh: "3.50",
+      Above500: "4.00",
     },
     {
       state: "Punjab",
       lat: "31.1471",
       lon: "75.3412°",
       ghi: "1702",
+      zeroToHundred: "3.49",
+      OhoToTh: "5.84",
+      ThoToFh: "7.30",
+      Above500: "8.85",
     },
     {
       state: "Puducherry",
       lat: "11.9416",
       lon: "79.8083°",
       ghi: "2017",
+      zeroToHundred: "5.60",
+      OhoToTh: "6.65",
+      ThoToFh: "7.40",
+      Above500: "8.64",
     },
     {
       state: "NCT of Delhi",
       lat: "28.7041",
       lon: "77.1025°",
       ghi: "1711",
+      zeroToHundred: "3.00",
+      OhoToTh: "4.50",
+      ThoToFh: "6.50",
+      Above500: "7.00",
     },
     {
       state: "Nagaland",
       lat: "26.1584",
       lon: "94.5624",
       ghi: "1484",
+      zeroToHundred: "4.50",
+      OhoToTh: "5.40",
+      ThoToFh: "6.00",
+      Above500: "7.00",
     },
     {
       state: "Mizoram",
       lat: "23.1645",
       lon: "92.9376",
       ghi: "1730",
+      zeroToHundred: "4.80",
+      OhoToTh: "5.50",
+      ThoToFh: "5.90",
+      Above500: "6.55",
     },
     {
       state: "Maghalaya",
       lat: "25.4670",
       lon: "91.3662",
       ghi: "1578",
+      zeroToHundred: "3.65",
+      OhoToTh: "4.00",
+      ThoToFh: "4.40",
+      Above500: "6.00",
     },
     {
       state: "Manipur",
       lat: "24.6637",
       lon: "93.9063",
       ghi: "1716",
+      zeroToHundred: "4.2",
+      OhoToTh: "5.5",
+      ThoToFh: "6.40",
+      Above500: "7.64",
     },
     {
       state: "Jharkhand",
       lat: "23.6102",
       lon: "85.2799",
       ghi: "1854",
+      zeroToHundred: "3.14",
+      OhoToTh: "4.64",
+      ThoToFh: "6.50",
+      Above500: "7.50",
     },
     {
       state: "Jammu and Kashmir",
       lat: "33.2778",
       lon: "75.3412",
       ghi: "1738",
+      zeroToHundred: "1.4",
+      OhoToTh: "3.00",
+      ThoToFh: "6.50",
+      Above500: "7.00",
     },
     {
       state: "Goa",
       lat: "15.2993",
       lon: "74.1240",
       ghi: "1950",
+      zeroToHundred: "3.25",
+      OhoToTh: "3.90",
+      ThoToFh: "4.70",
+      Above500: "5.75",
     },
     {
       state: "Bihar",
       lat: "25.0961",
       lon: "85.3131",
       ghi: "1724",
+      zeroToHundred: "6.10",
+      OhoToTh: "6.95",
+      ThoToFh: "8.05",
+      Above500: "9.75",
     },
     {
       state: "Chhattisgarh",
       lat: "21.2787",
       lon: "81.8661",
       ghi: "1883",
+      zeroToHundred: "4.5",
+      OhoToTh: "4.95",
+      ThoToFh: "5.6",
+      Above500: "6.5",
     },
     {
       state: "Dadra And Nagar Haveli",
       lat: "20.1809",
       lon: "73.0169",
       ghi: "1920",
+      zeroToHundred: "3.44",
+      OhoToTh: "7.34",
+      ThoToFh: "10.35",
+      Above500: "11.82",
     },
     {
       state: "Daman",
       lat: "20.3974",
       lon: "72.8328",
       ghi: "1964",
+      zeroToHundred: "1.4",
+      OhoToTh: "3.00",
+      ThoToFh: "6.50",
+      Above500: "7.00",
     },
     {
       state: "Andaman and Nicobar",
       lat: "11.7401",
       lon: "92.6586",
       ghi: "1828",
+      zeroToHundred: "2.05",
+      OhoToTh: "2.05",
+      ThoToFh: "7.2",
+      Above500: "7.5",
     },
     {
       state: "Anurachal Pradesh",
       lat: "28.2180",
       lon: "94.7278",
       ghi: "1428",
+      zeroToHundred: "2.65",
+      OhoToTh: "4.30",
+      ThoToFh: "6.50",
+      Above500: "7.75",
     },
   ];
   const [capacity, setCapacity] = useState(1);
@@ -234,10 +383,10 @@ export default function FormComponent() {
   };
   const handleShow = () => setShow(true);
   const handleAppShow = () => setAppShow(true);
-  const showAppliances = (e) =>{
+  const showAppliances = (e) => {
     e.preventDefault();
     handleAppShow();
-  }
+  };
   const showPopup = (e) => {
     e.preventDefault();
     if (cost > 0) {
@@ -258,7 +407,7 @@ export default function FormComponent() {
       setTimeout(() => {
         setError(null);
       }, 5000);
-    } 
+    }
   };
   return (
     <div className="container">
@@ -337,12 +486,9 @@ export default function FormComponent() {
                 </div>
               </div>
               <div className="my-2">
-              <button
-                onClick={showAppliances}
-                className="btn btn-primary"
-              >
-                Appliances Load
-              </button>
+                <button onClick={showAppliances} className="btn btn-primary">
+                  Appliances Load
+                </button>
               </div>
               <button
                 type="submit"
@@ -351,9 +497,7 @@ export default function FormComponent() {
               >
                 Submit
               </button>
-              <div className="text-center my-3 text-danger">
-                {error}
-              </div>
+              <div className="text-center my-3 text-danger">{error}</div>
             </form>
           </div>
         </div>
@@ -398,7 +542,6 @@ export default function FormComponent() {
         </Modal.Footer>
       </Modal>
 
-
       <Modal
         show={appshow}
         onHide={handleApplClose}
@@ -408,9 +551,7 @@ export default function FormComponent() {
         <Modal.Header closeButton>
           <Modal.Title>Appliances Load</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Appliances Load
-        </Modal.Body>
+        <Modal.Body>Appliances Load</Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleApplClose}>
             Close
