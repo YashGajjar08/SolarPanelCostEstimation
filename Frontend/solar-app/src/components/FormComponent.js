@@ -281,13 +281,13 @@ export default function FormComponent() {
                   {stateData.map((stateobj, index) => {
                     return (
                       <option value={JSON.stringify(stateobj)} key={index}>
-                        {stateobj.state}
+                        {stateobj.state} 
                       </option>
                     );
                   })}
                 </select>
               </div>
-              <div className="mb-3">
+              <div className="mb-3"> 
                 <label htmlFor="selectcategory" className="form-label">
                   Select State
                 </label>
