@@ -697,7 +697,7 @@ export default function FormComponent() {
         <Modal.Body>
           {tempData ? (
             <ul>
-            <li>Appliance Load : {(Math.round(totalLoad) / 1000).toFixed(2)} kW</li>
+              <li>Appliance Load : {(Math.round(totalLoad) / 1000).toFixed(2)} kW</li>
               <li>State : {JSON.parse(statename).state}</li>
               <li>GHI : {JSON.parse(statename).ghi} W/sq.m</li>
               <li>Lattitude : {JSON.parse(statename).lat}</li>
