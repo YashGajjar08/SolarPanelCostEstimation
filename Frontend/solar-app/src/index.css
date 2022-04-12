@@ -10,18 +10,36 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+ 
 }
 body::before{
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  height: 120vh;
-  background-color: rgba(0, 0, 0, 0.1);
 }
 .state-price th{
   width: 50% !important;
 }
 .form-card{
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(2px);
+}
+
+.custom-card{
+  width: 23rem;
+}
+
+.card-flex{
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.bg-card{
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
 }
