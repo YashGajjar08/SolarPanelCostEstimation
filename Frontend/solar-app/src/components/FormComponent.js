@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Modal, Button, Spinner, Table, Accordion } from "react-bootstrap";
+import Card from "./Card";
 
 export default function FormComponent() {
   const stateData = [
@@ -14,6 +15,7 @@ export default function FormComponent() {
       OhoToTh: "3.5",
       ThoToFh: "4.6",
       Above500: "6.6",
+      Unit: "4.18",
     },
     {
       state: "Telangana",
@@ -24,6 +26,7 @@ export default function FormComponent() {
       OhoToTh: "4.3",
       ThoToFh: "7.85",
       Above500: "8.75",
+      Unit: "4.25",
     },
     {
       state: "Madhya Pradesh",
@@ -34,6 +37,7 @@ export default function FormComponent() {
       OhoToTh: "5.05",
       ThoToFh: "6.4",
       Above500: "8.73",
+      Unit: "4.27",
     },
     {
       state: "Haryana",
@@ -44,6 +48,7 @@ export default function FormComponent() {
       OhoToTh: "4.75",
       ThoToFh: "5.55",
       Above500: "6.75",
+      Unit: "3.91",
     },
     {
       state: "Chhattisgarh",
@@ -54,6 +59,7 @@ export default function FormComponent() {
       OhoToTh: "4.95",
       ThoToFh: "5.6",
       Above500: "6.5",
+      Unit: "4.18",
     },
     {
       state: "Haryana",
@@ -64,6 +70,7 @@ export default function FormComponent() {
       OhoToTh: "4.75",
       ThoToFh: "5.55",
       Above500: "6.75",
+      Unit: "3.91",
     },
     {
       state: "Maharashtra",
@@ -74,6 +81,7 @@ export default function FormComponent() {
       OhoToTh: "5.92",
       ThoToFh: "8.89",
       Above500: "10.47",
+      Unit: "4.29",
     },
     {
       state: "Tripura",
@@ -84,6 +92,7 @@ export default function FormComponent() {
       OhoToTh: "4.75",
       ThoToFh: "5.55",
       Above500: "6.75",
+      Unit: "3.73",
     },
     {
       state: "Karnataka",
@@ -94,6 +103,7 @@ export default function FormComponent() {
       OhoToTh: "5.55",
       ThoToFh: "7.10",
       Above500: "8.15",
+      Unit: "4.22",
     },
     {
       state: "Kerala",
@@ -104,6 +114,7 @@ export default function FormComponent() {
       OhoToTh: "5.50",
       ThoToFh: "6.90",
       Above500: "7.90",
+      Unit: "4.17",
     },
     {
       state: "Uttar Pradesh",
@@ -114,6 +125,7 @@ export default function FormComponent() {
       OhoToTh: "6.00",
       ThoToFh: "6.50",
       Above500: "7.00",
+      Unit: "3.81",
     },
     {
       state: "Assam",
@@ -124,6 +136,7 @@ export default function FormComponent() {
       OhoToTh: "6.15",
       ThoToFh: "6.75",
       Above500: "7.15",
+      Unit: "3.70",
     },
     {
       state: "Tamil Nadu",
@@ -134,6 +147,7 @@ export default function FormComponent() {
       OhoToTh: "3.50",
       ThoToFh: "4.60",
       Above500: "6.60",
+      Unit: "4.18",
     },
     {
       state: "Karnataka",
@@ -144,6 +158,7 @@ export default function FormComponent() {
       OhoToTh: "5.55",
       ThoToFh: "7.10",
       Above500: "8.15",
+      Unit: "4.22",
     },
     {
       state: "West Bengal",
@@ -154,6 +169,7 @@ export default function FormComponent() {
       OhoToTh: "5.86",
       ThoToFh: "6.98",
       Above500: "8.50",
+      Unit: "3.73",
     },
     {
       state: "Gujarat",
@@ -164,6 +180,7 @@ export default function FormComponent() {
       OhoToTh: "3.75",
       ThoToFh: "4.90",
       Above500: "5.05",
+      Unit: "4.53",
     },
     {
       state: "Odisha",
@@ -174,6 +191,7 @@ export default function FormComponent() {
       OhoToTh: "4.80",
       ThoToFh: "5.80",
       Above500: "6.20",
+      Unit: "3.92",
     },
     {
       state: "Rajasthan",
@@ -184,6 +202,7 @@ export default function FormComponent() {
       OhoToTh: "7.35",
       ThoToFh: "7.65",
       Above500: "7.95",
+      Unit: "4.33",
     },
     {
       state: "Uttarakhand",
@@ -194,6 +213,7 @@ export default function FormComponent() {
       OhoToTh: "4.20",
       ThoToFh: "5.30",
       Above500: "6.64",
+      Unit: "4.11",
     },
     {
       state: "Sikkim",
@@ -204,6 +224,7 @@ export default function FormComponent() {
       OhoToTh: "3.00",
       ThoToFh: "3.50",
       Above500: "4.00",
+      Unit: "3.40",
     },
     {
       state: "Punjab",
@@ -214,6 +235,7 @@ export default function FormComponent() {
       OhoToTh: "5.84",
       ThoToFh: "7.30",
       Above500: "8.85",
+      Unit: "3.91",
     },
     {
       state: "Puducherry",
@@ -224,6 +246,7 @@ export default function FormComponent() {
       OhoToTh: "6.65",
       ThoToFh: "7.40",
       Above500: "8.64",
+      Unit: "4.18",
     },
     {
       state: "NCT of Delhi",
@@ -234,6 +257,7 @@ export default function FormComponent() {
       OhoToTh: "4.50",
       ThoToFh: "6.50",
       Above500: "7.00",
+      Unit: "3.86",
     },
     {
       state: "Nagaland",
@@ -244,6 +268,7 @@ export default function FormComponent() {
       OhoToTh: "5.40",
       ThoToFh: "6.00",
       Above500: "7.00",
+      Unit: "3.53",
     },
     {
       state: "Mizoram",
@@ -254,6 +279,7 @@ export default function FormComponent() {
       OhoToTh: "5.50",
       ThoToFh: "5.90",
       Above500: "6.55",
+      Unit: "4.04",
     },
     {
       state: "Maghalaya",
@@ -264,6 +290,7 @@ export default function FormComponent() {
       OhoToTh: "4.00",
       ThoToFh: "4.40",
       Above500: "6.00",
+      Unit: "3.74",
     },
     {
       state: "Manipur",
@@ -274,6 +301,7 @@ export default function FormComponent() {
       OhoToTh: "5.5",
       ThoToFh: "6.40",
       Above500: "7.64",
+      Unit: "4.03",
     },
     {
       state: "Jharkhand",
@@ -284,6 +312,7 @@ export default function FormComponent() {
       OhoToTh: "4.64",
       ThoToFh: "6.50",
       Above500: "7.50",
+      Unit: "4.19",
     },
     {
       state: "Jammu and Kashmir",
@@ -294,6 +323,7 @@ export default function FormComponent() {
       OhoToTh: "3.00",
       ThoToFh: "6.50",
       Above500: "7.00",
+      Unit: "4.29",
     },
     {
       state: "Goa",
@@ -304,6 +334,7 @@ export default function FormComponent() {
       OhoToTh: "3.90",
       ThoToFh: "4.70",
       Above500: "5.75",
+      Unit: "4.26",
     },
     {
       state: "Bihar",
@@ -314,6 +345,7 @@ export default function FormComponent() {
       OhoToTh: "6.95",
       ThoToFh: "8.05",
       Above500: "9.75",
+      Unit: "3.80",
     },
     {
       state: "Chhattisgarh",
@@ -324,6 +356,7 @@ export default function FormComponent() {
       OhoToTh: "4.95",
       ThoToFh: "5.6",
       Above500: "6.5",
+      Unit: "4.18",
     },
     {
       state: "Dadra And Nagar Haveli",
@@ -334,6 +367,7 @@ export default function FormComponent() {
       OhoToTh: "7.34",
       ThoToFh: "10.35",
       Above500: "11.82",
+      Unit: "4.28",
     },
     {
       state: "Daman",
@@ -344,6 +378,7 @@ export default function FormComponent() {
       OhoToTh: "3.00",
       ThoToFh: "6.50",
       Above500: "7.00",
+      Unit: "4.42",
     },
     {
       state: "Andaman and Nicobar",
@@ -354,6 +389,7 @@ export default function FormComponent() {
       OhoToTh: "2.05",
       ThoToFh: "7.2",
       Above500: "7.5",
+      Unit: "3.94",
     },
     {
       state: "Anurachal Pradesh",
@@ -364,6 +400,7 @@ export default function FormComponent() {
       OhoToTh: "4.30",
       ThoToFh: "6.50",
       Above500: "7.75",
+      Unit: "3.38",
     },
   ];
   const [statename, setStatename] = useState(JSON.stringify(stateData[0]));
@@ -386,7 +423,48 @@ export default function FormComponent() {
   const [waterpumpcount, setwaterpumpcount] = useState(0);
   const [geyser, setgeyser] = useState("800");
   const [geysercount, setgeysercount] = useState(0);
-  const totalLoad = (geyser * geysercount) + (waterpump * waterpumpcount * 746) + (wm * wmcount) + (ac * account) + (tv * tvcount) + (celfancount * celfan) + (bulbcount * bulb)
+  const [showCards, setshowCards] = useState(false);
+  const [showCardsText, setshowCardsText] = useState("Show Cards");
+  const toggleCards = (e) => {
+    e.preventDefault();
+    if (showCards === true) {
+      setshowCards(false);
+      setshowCardsText("Show Cards");
+    } else {
+      setshowCards(true);
+      setshowCardsText("Hide Cards");
+    }
+  };
+  const totalLoad =
+    geyser * geysercount +
+    waterpump * waterpumpcount * 746 +
+    wm * wmcount +
+    ac * account +
+    tv * tvcount +
+    celfancount * celfan +
+    bulbcount * bulb;
+
+  const sizeOfPowerPlant = totalLoad;
+  const monthlyElectricityGeneration =
+    (totalLoad * JSON.parse(statename).Unit * 30) / 1000;
+  const annualElectricityGeneration =
+    (totalLoad * JSON.parse(statename).Unit * 365) / 1000;
+  const monthlyTerrif = monthlyElectricityGeneration * cost;
+  const annualTerrif = annualElectricityGeneration * cost;
+  const lifeTimeTerrif = annualElectricityGeneration * cost * 25;
+  const costOfPlant = totalLoad * 60;
+  const costOfPlantwithS = totalLoad * 60 * 0.7;
+
+  const casdValues = [
+    ["Monthly Electricity Generation", Math.round(monthlyElectricityGeneration) + " Unit"],
+    ["Annual Electricity Generation", Math.round(annualElectricityGeneration) + " Unit"],
+    ["Monthly Terrif", Math.round(monthlyTerrif) +" ₹"],
+    ["Annual Terrif", Math.round(annualTerrif) +" ₹"],
+    ["Life Time Terrif", Math.round(lifeTimeTerrif) +" ₹"],
+    ["Feasible Plant Capacity", Math.round(sizeOfPowerPlant)/1000 + " kW"],
+    ["Cost of Plant Without subsidy", Math.round(costOfPlant) + " ₹"],
+    ["Cost of Plant with subsidy", Math.round(costOfPlantwithS) + " ₹"],
+  ];
   const handleClose = () => {
     setShow(false);
     setTempData(null);
@@ -397,8 +475,10 @@ export default function FormComponent() {
     if (cost > 0) {
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(statename).lat
-          }&lon=${JSON.parse(statename).lon
+          `https://api.openweathermap.org/data/2.5/weather?lat=${
+            JSON.parse(statename).lat
+          }&lon=${
+            JSON.parse(statename).lon
           }&appid=57b0455c3ac9fcc2991aed2d12e53998`
         )
         .then((res) => {
@@ -414,7 +494,7 @@ export default function FormComponent() {
   };
   return (
     <div className="container">
-      <div className="row mt-4 d-flex justify-content-center">
+      <div className="row mt-4 d-flex justify-content-center mb-5">
         <div className="col-8">
           <div className="card px-3 py-4 form-card">
             <h2 className="text-center">ENTER BELOW DETAILS</h2>
@@ -452,10 +532,17 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={bulbcount} className="form-control form-control-sm" onChange={(e) => setbulbcount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={bulbcount}
+                                className="form-control form-control-sm"
+                                onChange={(e) => setbulbcount(e.target.value)}
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{bulbcount * bulb}</b> W</td>
+                            <td>
+                              <b>{bulbcount * bulb}</b> W
+                            </td>
                           </tr>
                           <tr>
                             <td>Ceiling Fan</td>
@@ -472,10 +559,17 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={celfancount} className="form-control form-control-sm" onChange={(e) => setcelfancount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={celfancount}
+                                className="form-control form-control-sm"
+                                onChange={(e) => setcelfancount(e.target.value)}
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{celfancount * celfan}</b> W</td>
+                            <td>
+                              <b>{celfancount * celfan}</b> W
+                            </td>
                           </tr>
                           <tr>
                             <td>Television</td>
@@ -491,10 +585,17 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={tvcount} className="form-control form-control-sm" onChange={(e) => settvcount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={tvcount}
+                                className="form-control form-control-sm"
+                                onChange={(e) => settvcount(e.target.value)}
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{tv * tvcount}</b> W</td>
+                            <td>
+                              <b>{tv * tvcount}</b> W
+                            </td>
                           </tr>
                           <tr>
                             <td>Air Conditioner</td>
@@ -510,10 +611,17 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={account} className="form-control form-control-sm" onChange={(e) => setaccount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={account}
+                                className="form-control form-control-sm"
+                                onChange={(e) => setaccount(e.target.value)}
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{ac * account}</b> W</td>
+                            <td>
+                              <b>{ac * account}</b> W
+                            </td>
                           </tr>
                           <tr>
                             <td>Washing Machine</td>
@@ -528,10 +636,17 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={wmcount} className="form-control form-control-sm" onChange={(e) => setwmcount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={wmcount}
+                                className="form-control form-control-sm"
+                                onChange={(e) => setwmcount(e.target.value)}
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{wm * wmcount}</b> W</td>
+                            <td>
+                              <b>{wm * wmcount}</b> W
+                            </td>
                           </tr>
                           <tr>
                             <td>Water Pump</td>
@@ -548,10 +663,19 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={waterpumpcount} className="form-control form-control-sm" onChange={(e) => setwaterpumpcount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={waterpumpcount}
+                                className="form-control form-control-sm"
+                                onChange={(e) =>
+                                  setwaterpumpcount(e.target.value)
+                                }
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{waterpump * waterpumpcount * 746}</b> W</td>
+                            <td>
+                              <b>{waterpump * waterpumpcount * 746}</b> W
+                            </td>
                           </tr>
                           <tr>
                             <td>Geyser</td>
@@ -569,17 +693,27 @@ export default function FormComponent() {
                             </td>
                             <td className="text-center">X</td>
                             <td>
-                              <input type="number" value={geysercount} className="form-control form-control-sm" onChange={(e) => setgeysercount(e.target.value)} />
+                              <input
+                                type="number"
+                                value={geysercount}
+                                className="form-control form-control-sm"
+                                onChange={(e) => setgeysercount(e.target.value)}
+                              />
                             </td>
                             <td className="text-center">=</td>
-                            <td><b>{geyser * geysercount}</b> W</td>
+                            <td>
+                              <b>{geyser * geysercount}</b> W
+                            </td>
                           </tr>
                         </tbody>
                       </Table>
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
-                <span className="ms-2">Total Appliances Load : <b>{totalLoad}</b>W ({(Math.round(totalLoad) / 1000).toFixed(2)}kW)</span>
+                <span className="ms-2">
+                  Total Appliances Load : <b>{totalLoad}</b>W (
+                  <b>{(Math.round(totalLoad) / 1000).toFixed(2)}</b>kW)
+                </span>
               </div>
               <div className="mb-3">
                 <label htmlFor="selectstate" className="form-label">
@@ -671,20 +805,24 @@ export default function FormComponent() {
                   </span>
                 </div>
               </div>
-
-              <button
-                type="submit"
-                onClick={showPopup}
-                className="btn btn-primary"
-              >
-                Submit
-              </button>
+              <div className="d-flex justify-content-between">
+                <button
+                  type="submit"
+                  onClick={showPopup}
+                  className="btn btn-primary"
+                >
+                  Submit
+                </button>
+                <button onClick={toggleCards} className="btn btn-primary">
+                  {showCardsText}
+                </button>
+              </div>
               <div className="text-center my-3 text-danger">{error}</div>
             </form>
           </div>
         </div>
       </div>
-
+      {showCards && <Card title={casdValues} />}
       <Modal
         show={show}
         onHide={handleClose}
@@ -697,7 +835,9 @@ export default function FormComponent() {
         <Modal.Body>
           {tempData ? (
             <ul>
-              <li>Appliance Load : {(Math.round(totalLoad) / 1000).toFixed(2)} kW</li>
+              <li>
+                Appliance Load : {(Math.round(totalLoad) / 1000).toFixed(2)} kW
+              </li>
               <li>State : {JSON.parse(statename).state}</li>
               <li>GHI : {JSON.parse(statename).ghi} W/sq.m</li>
               <li>Lattitude : {JSON.parse(statename).lat}</li>
