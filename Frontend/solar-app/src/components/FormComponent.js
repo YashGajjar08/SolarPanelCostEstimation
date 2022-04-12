@@ -424,15 +424,15 @@ export default function FormComponent() {
   const [geyser, setgeyser] = useState("800");
   const [geysercount, setgeysercount] = useState(0);
   const [showCards, setshowCards] = useState(false);
-  const [showCardsText, setshowCardsText] = useState("Show Cards");
+  const [showCardsText, setshowCardsText] = useState("Show Dashboard");
   const toggleCards = (e) => {
     e.preventDefault();
     if (showCards === true) {
       setshowCards(false);
-      setshowCardsText("Show Cards");
+      setshowCardsText("Show Dashboard");
     } else {
       setshowCards(true);
-      setshowCardsText("Hide Cards");
+      setshowCardsText("Hide Dashboard");
     }
   };
   const totalLoad =
