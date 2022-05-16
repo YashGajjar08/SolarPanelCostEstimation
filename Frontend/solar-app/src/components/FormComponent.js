@@ -7,17 +7,6 @@ import Card from "./Card";
 export default function FormComponent() {
   const stateData = [
     {
-      state: "Tamil Nadu",
-      lat: "11.059821",
-      lon: "78.387451",
-      ghi: "1957",
-      zeroToHundred: "0",
-      OhoToTh: "3.5",
-      ThoToFh: "4.6",
-      Above500: "6.6",
-      Unit: "4.18",
-    },
-    {
       state: "Telangana",
       lat: "17.123184",
       lon: "79.208824",
@@ -38,28 +27,6 @@ export default function FormComponent() {
       ThoToFh: "6.4",
       Above500: "8.73",
       Unit: "4.27",
-    },
-    {
-      state: "Haryana",
-      lat: "29.238478",
-      lon: "76.431885",
-      ghi: "1702",
-      zeroToHundred: "3.6",
-      OhoToTh: "4.75",
-      ThoToFh: "5.55",
-      Above500: "6.75",
-      Unit: "3.91",
-    },
-    {
-      state: "Chhattisgarh",
-      lat: "21.295132",
-      lon: "81.828232",
-      ghi: "1883",
-      zeroToHundred: "4.5",
-      OhoToTh: "4.95",
-      ThoToFh: "5.6",
-      Above500: "6.5",
-      Unit: "4.18",
     },
     {
       state: "Haryana",
@@ -93,17 +60,6 @@ export default function FormComponent() {
       ThoToFh: "5.55",
       Above500: "6.75",
       Unit: "3.73",
-    },
-    {
-      state: "Karnataka",
-      lat: "15.317277",
-      lon: "75.713890",
-      ghi: "1941",
-      zeroToHundred: "4.10",
-      OhoToTh: "5.55",
-      ThoToFh: "7.10",
-      Above500: "8.15",
-      Unit: "4.22",
     },
     {
       state: "Kerala",
@@ -143,7 +99,7 @@ export default function FormComponent() {
       lat: "11.127123",
       lon: "78.656891",
       ghi: "1957",
-      zeroToHundred: "0.00",
+      zeroToHundred: "2.9",
       OhoToTh: "3.50",
       ThoToFh: "4.60",
       Above500: "6.60",
@@ -424,6 +380,7 @@ export default function FormComponent() {
   const [geyser, setgeyser] = useState("800");
   const [geysercount, setgeysercount] = useState(0);
   const [showCards, setshowCards] = useState(false);
+  const [totalLoadValue, setTotalLoadValue] = useState(0);
   const [showCardsText, setshowCardsText] = useState("Show Dashboard");
   const toggleCards = (e) => {
     e.preventDefault();
@@ -435,14 +392,15 @@ export default function FormComponent() {
       setshowCardsText("Hide Dashboard");
     }
   };
-  const totalLoad =
+  var totalLoad =
     geyser * geysercount +
     waterpump * waterpumpcount * 746 +
     wm * wmcount +
     ac * account +
     tv * tvcount +
     celfancount * celfan +
-    bulbcount * bulb;
+    bulbcount * bulb +
+    totalLoadValue * 1000;
 
   const sizeOfPowerPlant = totalLoad;
   const monthlyElectricityGeneration =
@@ -454,16 +412,21 @@ export default function FormComponent() {
   const lifeTimeTerrif = annualElectricityGeneration * cost * 25;
   const costOfPlant = totalLoad * 60;
   const costOfPlantwithS = totalLoad * 60 * 0.7;
+  const PaybackPeriod = (costOfPlantwithS)/(annualTerrif)
 
   const casdValues = [
+    ["Feasible Plant Capacity", Math.round(sizeOfPowerPlant) / 1000 + " kW"],
+    ["Cost of Plant With subsidy", Math.round(costOfPlantwithS) + " ₹"],
+    ["Payback Period", Math.round(PaybackPeriod) + " Year"],
+    ["Cost of Plant Without subsidy", Math.round(costOfPlant) + " ₹"],
     ["Monthly Electricity Generation", Math.round(monthlyElectricityGeneration) + " Unit"],
     ["Annual Electricity Generation", Math.round(annualElectricityGeneration) + " Unit"],
-    ["Monthly Terrif", Math.round(monthlyTerrif) +" ₹"],
-    ["Annual Terrif", Math.round(annualTerrif) +" ₹"],
-    ["Life Time Terrif", Math.round(lifeTimeTerrif) +" ₹"],
-    ["Feasible Plant Capacity", Math.round(sizeOfPowerPlant)/1000 + " kW"],
-    ["Cost of Plant Without subsidy", Math.round(costOfPlant) + " ₹"],
-    ["Cost of Plant with subsidy", Math.round(costOfPlantwithS) + " ₹"],
+    ["Annual Tarrif", Math.round(annualTerrif) + " ₹"],
+    ["Life Time Tarrif", Math.round(lifeTimeTerrif*100)/100 + " ₹"],
+    
+
+    
+    
   ];
   const handleClose = () => {
     setShow(false);
@@ -475,10 +438,8 @@ export default function FormComponent() {
     if (cost > 0) {
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${
-            JSON.parse(statename).lat
-          }&lon=${
-            JSON.parse(statename).lon
+          `https://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(statename).lat
+          }&lon=${JSON.parse(statename).lon
           }&appid=57b0455c3ac9fcc2991aed2d12e53998`
         )
         .then((res) => {
@@ -714,6 +675,24 @@ export default function FormComponent() {
                   Total Appliances Load : <b>{totalLoad}</b>W (
                   <b>{(Math.round(totalLoad) / 1000).toFixed(2)}</b>kW)
                 </span>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="totalapplload" className="form-label">
+                  Set Appliance Load
+                </label>
+                <div className="input-group mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="totalapplload"
+                    value={totalLoadValue}
+                    onChange={(e) => setTotalLoadValue(e.target.value)}
+                    required
+                  />
+                  <span className="input-group-text" id="basic-addon2">
+                    kW
+                  </span>
+                </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="selectstate" className="form-label">

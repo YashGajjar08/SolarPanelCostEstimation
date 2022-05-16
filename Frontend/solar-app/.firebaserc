@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "solar-panel-calculator-5d551"
+  },
+  "targets": {
+    "solar-panel-calculator-5d551": {
+      "hosting": {
+        "app": [
+          "solarpanelcalculator"
+        ]
+      }
+    }
+  }
+}
